@@ -3,12 +3,12 @@ import axios from 'axios';
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
 
 const AddFriend = () => {
-    const [state, setState] = useState({
-        name: '',
-        age: '',
-        email: '',
-        // id: '',
-    })
+    // const [state, setState] = useState({
+    //     name: '',
+    //     age: '',
+    //     email: '',
+    //     // id: '',
+    // })
 
     const initialFormValues = {
         name: '',
@@ -36,7 +36,7 @@ const AddFriend = () => {
         }
 
         axiosWithAuth()
-            .post('http://localhost:5000/api/friends', newFriend)
+            .post('/friends', newFriend)
             .then(res => {
                 const token = localStorage.getItem('token');
                 console.log(res)
@@ -60,11 +60,12 @@ const AddFriend = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="age">Age:</label><br/>
-                        <input onChange={handleChange} name ='age' type='number'/>
+                        <input onChange={handleChange} name ='age' type='number' value={formValues.age}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email:</label><br/>
-                        <input onChange={handleChange} name='email' type='email'/>
+                        <input onChange={handleChange} name='email' type='email'
+                        value={formValues.email}/>
                     </div>
                     {/* <div className="form-group">
                         <label htmlFor="id">Id Number:</label><br/>
